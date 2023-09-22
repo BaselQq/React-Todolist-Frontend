@@ -35,11 +35,18 @@ function Login() {
         }
     }
 
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        setUser(null);
+    }
+
     return (
         <div>
             {user ? (
             <div>
                 <p>Welcome, {user.name}!</p>
+                <button onClick={handleLogout}>Logout</button>
             </div>
             ) : (
                 <form onSubmit={handleSubmit}>
