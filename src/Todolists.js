@@ -49,24 +49,6 @@ function Todolists() {
     }
     updateTodo();
   }
-
-  // function unCheckTodo(todoId) {
-  //   async function updateTodo() {
-  //     try {
-  //       const postResponse = await axios.patch(`http://127.0.0.1:8000/api/todos/${todoId}`, {
-  //           'check': false
-  //         }, {
-  //           headers: {
-  //             'Authorization' : `Berear ${token}`
-  //           }
-  //         })
-  //     } catch(error) {
-  //       console.log('Error from unchecking todo:', error);
-  //     }
-  //   }
-  //   updateTodo();
-  // }
-
   if (loading) return <div>Loading...</div>;
 
   return (
