@@ -27,7 +27,6 @@ function Todolists() {
       }   
     }
 
-
   useEffect(() => {
     fetchTodos();
   }, []);

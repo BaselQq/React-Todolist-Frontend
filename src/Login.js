@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Outlet } from 'react-router-dom';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -45,7 +46,8 @@ function Login() {
         <div>
             {user ? (
             <div>
-                <p>Welcome, {user.name}!</p>
+                {/* <p>Welcome, {user.name}!</p> */}
+                <Outlet/>
                 <button onClick={handleLogout}>Logout</button>
             </div>
             ) : (
