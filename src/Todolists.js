@@ -51,19 +51,33 @@ function Todolists() {
     updateTodo();
   }
 
-    async function addNewTodo(value) {
+  async function addNewTodo(value) {
+    try {
+      const addNewInput = await axios.post(`http://127.0.0.1:8000/api/todos`, {
+        'name': value,
+        'check': 0
+      }, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      fetchTodos();
+    } catch(error) {
+      console.log('Error Adding new Input', error);
+    }
+    fetchTodos();
+  }
+
+    async function deleteTodo(todoId) {
       try {
-        const addNewInput = await axios.post(`http://127.0.0.1:8000/api/todos`, {
-          'name': value,
-          'check': 0
-        }, {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
+        const response = await axios.delete(`http://127.0.0.1:8000/api/todos/${todoId}`, {
+            headers: {
+                'Authorization': `Bearer ${token}` 
+            }
         });
         fetchTodos();
       } catch(error) {
-        console.log('Error Adding new Input', error);
+        console.log('Error by deleting todo', error);
       }
       fetchTodos();
     }
@@ -79,8 +93,8 @@ function Todolists() {
         </form>
       <ul>
         {todos.map(todo => (
-          <li key={todo.id}>
-            {todo.name} ({todo.check ? 
+          <li key={todo.id}><button onClick={() => deleteTodo(todo.id)}>X</button> 
+            {todo.name} {todo.check ? 
               <input type="checkbox" checked={todo.check} onChange={() => checkTodo(todo.id, false)}/>
               : <input type="checkbox" checked={todo.check} onChange={() => checkTodo(todo.id, true)}/>}
           </li>
