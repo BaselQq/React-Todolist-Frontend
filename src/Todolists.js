@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import Input from './Components/Input';
 
 function Todolists() {
     const [todos, setTodos] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [newTodo, setNewTodo] = useState("");
     
     const token = localStorage.getItem('token');
 
@@ -48,11 +50,33 @@ function Todolists() {
     }
     updateTodo();
   }
+
+    async function addNewTodo(value) {
+      try {
+        const addNewInput = await axios.post(`http://127.0.0.1:8000/api/todos`, {
+          'name': value,
+          'check': 0
+        }, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        fetchTodos();
+      } catch(error) {
+        console.log('Error Adding new Input', error);
+      }
+      fetchTodos();
+    }
+
   if (loading) return <div>Loading...</div>;
 
   return (
     <div>
       <h1>Todos</h1>
+        <form>
+          <input type='text' onChange={e => setNewTodo(e.target.value)}/>
+          <button className='submit' type='submit' onClick={() => addNewTodo(newTodo)}>Add</button>
+        </form>
       <ul>
         {todos.map(todo => (
           <li key={todo.id}>
