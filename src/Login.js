@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Form, Outlet } from 'react-router-dom';
+import { Form } from 'react-router-dom';
 import { Box, Button, Center, FormControl, Input, Text } from '@chakra-ui/react';
-import HomePage from './HomePage';
 import Todolists from './Todolists';
 
 function Login() {
@@ -96,7 +95,7 @@ function Login() {
                                     </div>
                                     {error && <p style={{color: 'red'}}>{error}</p>}
                                     <Center>
-                                    <Button boxShadow="lg" rounded="2xl" mt={8} type='submit'>Sing in</Button>
+                                    <Button textColor="#184E77" background="#76C893" color="blue" boxShadow="lg" rounded="2xl" mt={8} type='submit'>Sing in</Button>
                                     </Center>
                                     </FormControl>
                                 </div>
