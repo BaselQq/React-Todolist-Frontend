@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Form, Outlet } from 'react-router-dom';
 import { Box, Button, Center, FormControl, Input, Text } from '@chakra-ui/react';
+import HomePage from './HomePage';
+import Todolists from './Todolists';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -47,8 +49,8 @@ function Login() {
         <div>
             {user ? (
             <div>
-                <Outlet/>
-                <button onClick={handleLogout}>Logout</button>
+                <Todolists/>
+                <Button onClick={handleLogout}>Logout</Button>
             </div>
             ) : (
                 <div>
