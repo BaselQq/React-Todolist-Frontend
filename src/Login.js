@@ -55,24 +55,24 @@ function Login() {
                     <Center mt={30}>
                         <Box w="50%" rounded="md" p="2" bg="white">
                             <Center>
-                                <Text fontSize="6xl">Todolist</Text>
+                                <Text fontSize="5xl">Todolist</Text>
                             </Center>
                             <Center>
-                                <Text fontSize="6xl">Login</Text>
+                                <Text fontSize="5xl">Login</Text>
                             </Center>
                         </Box>    
                     </Center>
-                    <Center >
-                        <Box boxShadow="lg" w="50%" rounded="md" p="10" bg="white" background='#E0E9BE'>
+                    <Center>
+                        <Box boxShadow="lg" w="50%" h="350px" rounded="3em" p="10" bg="white" background='#E0E9BE'>
                             <Form onSubmit={handleSubmit}>
                                 <div>
                                     <FormControl>
                                     <Input 
                                         boxShadow="lg" 
-                                        rounded="md"
+                                        rounded="2xl"
                                         placeholder="email"
-                                        m={2}
                                         background="white"
+                                        mt={12}
                                         type="email"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
@@ -80,11 +80,11 @@ function Login() {
                                     <div>
                                         <Input
                                             boxShadow="lg" 
-                                            rounded="md"
+                                            rounded="2xl"
                                             placeholder="password"
                                             color="black"
                                             background="white"
-                                            m={2}
+                                            mt={8}
                                             type="password"
                                             value={password}
                                             onChange={(e) => setPassword(e.target.value)}
@@ -92,7 +92,7 @@ function Login() {
                                     </div>
                                     {error && <p style={{color: 'red'}}>{error}</p>}
                                     <Center>
-                                    <Button boxShadow="lg" rounded="md" m={2} type='submit'>Sing in</Button>
+                                    <Button boxShadow="lg" rounded="2xl" mt={8} type='submit'>Sing in</Button>
                                     </Center>
                                     </FormControl>
                                 </div>
