@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Outlet } from 'react-router-dom';
+import { Form, Outlet } from 'react-router-dom';
+import { AbsoluteCenter, Box, Button, Center, FormControl, FormErrorMessage, FormHelperText, FormLabel, Input, Text } from '@chakra-ui/react';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -32,7 +33,7 @@ function Login() {
                 setUser(response.data.user);
             }
         } catch(err) {
-            setError('Invailid login credentials');
+            setError('Login Credentials missing');
         }
     }
 
@@ -46,31 +47,59 @@ function Login() {
         <div>
             {user ? (
             <div>
-                {/* <p>Welcome, {user.name}!</p> */}
                 <Outlet/>
                 <button onClick={handleLogout}>Logout</button>
             </div>
             ) : (
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <label>Email: </label>
-                        <input 
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                        <div>
-                            <label>Password: </label>
-                            <input
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                        </div>
-                        <button type="submit">Sing in</button>
-                        {error && <p style={{color: 'red'}}>{error}</p>}
-                    </div>
-                </form>
+                <div>
+                    <Center mt={30}>
+                        <Box w="50%" rounded="md" p="2" bg="white">
+                            <Center>
+                                <Text fontSize="6xl">Todolist</Text>
+                            </Center>
+                            <Center>
+                                <Text fontSize="6xl">Login</Text>
+                            </Center>
+                        </Box>    
+                    </Center>
+                    <Center >
+                        <Box boxShadow="lg" w="50%" rounded="md" p="10" bg="white" background='#E0E9BE'>
+                            <Form onSubmit={handleSubmit}>
+                                <div>
+                                    <FormControl>
+                                    <Input 
+                                        boxShadow="lg" 
+                                        rounded="md"
+                                        placeholder="email"
+                                        m={2}
+                                        background="white"
+                                        type="email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                    />
+                                    <div>
+                                        <Input
+                                            boxShadow="lg" 
+                                            rounded="md"
+                                            placeholder="password"
+                                            color="black"
+                                            background="white"
+                                            m={2}
+                                            type="password"
+                                            value={password}
+                                            onChange={(e) => setPassword(e.target.value)}
+                                        />
+                                    </div>
+                                    {error && <p style={{color: 'red'}}>{error}</p>}
+                                    <Center>
+                                    <Button boxShadow="lg" rounded="md" m={2} type='submit'>Sing in</Button>
+                                    </Center>
+                                    </FormControl>
+                                </div>
+                            </Form>
+                        </Box>
+                    </Center>
+                </div>
             )
         }
         </div>
