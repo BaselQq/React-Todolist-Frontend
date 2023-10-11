@@ -104,11 +104,11 @@ function Todolists() {
               {todos.map(todo => (
                 <ListItem>
                   <Text as={todo.check == true && "s"} m={1} fontSize="xl" key={todo.id}>
+                    <Button size="xs" background="#2a9d8f" m={2} onClick={() => deleteTodo(todo.id)}>X</Button>
                   {todo.check ?
                     <Checkbox m={2.5} type="checkbox" isChecked={todo.check} onChange={() => checkTodo(todo.id, false)}/>
                     : <Checkbox background="white" m={2.5} type="checkbox" isChecked={todo.check} onChange={() => checkTodo(todo.id, true)}/>}
                     {todo.name}
-                  <Button size="xs" background="#2a9d8f" m={2} onClick={() => deleteTodo(todo.id)}>X</Button>
                   </Text>
                 </ListItem>
               ))}
