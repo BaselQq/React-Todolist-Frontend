@@ -63,6 +63,7 @@ function Todolists() {
         }
       });
       fetchTodos();
+      setNewTodo("");
     } catch(error) {
       console.log('Error Adding new Input', error);
     }
@@ -93,7 +94,7 @@ function Todolists() {
       </Center>
         <Form>
           <Center>
-            <Input boxShadow="lg" bg="white" type='text' onChange={e => setNewTodo(e.target.value)}/>
+            <Input value={newTodo} boxShadow="lg" bg="white" type='text' onChange={e => setNewTodo(e.target.value)}/>
             <Button boxShadow="lg" m={2} className='submit' type='submit' onClick={() => addNewTodo(newTodo)}>Add</Button>
           </Center>
         </Form>
