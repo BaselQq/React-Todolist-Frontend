@@ -50,7 +50,9 @@ function Login() {
             {user ? (
             <div>
                 <Todolists/>
-                <Button onClick={handleLogout}>Logout</Button>
+                <Center>
+                    <Button boxShadow="lg" onClick={handleLogout}>Logout</Button>
+                </Center>
             </div>
             ) : (
                 <div>

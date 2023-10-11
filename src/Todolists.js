@@ -1,6 +1,7 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
-import Input from './Components/Input';
+import React, { useState, useEffect } from 'react'; 
+import { Box, Button, Checkbox, Center, ListItem, List, FormControl, Input, Text } from '@chakra-ui/react';
+import { Form } from 'react-router-dom';
 
 function Todolists() {
     const [todos, setTodos] = useState([]);
@@ -85,22 +86,36 @@ function Todolists() {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div>
-      <h1>Todos</h1>
-        <form>
-          <input type='text' onChange={e => setNewTodo(e.target.value)}/>
-          <button className='submit' type='submit' onClick={() => addNewTodo(newTodo)}>Add</button>
-        </form>
-      <ul>
-        {todos.map(todo => (
-          <li key={todo.id}><button onClick={() => deleteTodo(todo.id)}>X</button> 
-            {todo.name} {todo.check ? 
-              <input type="checkbox" checked={todo.check} onChange={() => checkTodo(todo.id, false)}/>
-              : <input type="checkbox" checked={todo.check} onChange={() => checkTodo(todo.id, true)}/>}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Center m={30}>
+    <Box boxShadow="lg" w="75%" h="400px" rounded="3em" p="10" bg="white" background='#E0E9BE'>
+      <Center>
+        <Text fontSize="4xl">List</Text>
+      </Center>
+        <Form>
+          <Center>
+            <Input boxShadow="lg" bg="white" type='text' onChange={e => setNewTodo(e.target.value)}/>
+            <Button boxShadow="lg" m={2} className='submit' type='submit' onClick={() => addNewTodo(newTodo)}>Add</Button>
+          </Center>
+        </Form>
+        <Box mr="0.6em">
+          <div style={{overflowY: "scroll", height: "40vh"}}>
+            <List>
+              {todos.map(todo => (
+                <ListItem>
+                  <Text as={todo.check == true && "s"} m={1} fontSize="xl" key={todo.id}>
+                  {todo.check ?
+                    <Checkbox m={2.5} type="checkbox" isChecked={todo.check} onChange={() => checkTodo(todo.id, false)}/>
+                    : <Checkbox background="white" m={2.5} type="checkbox" isChecked={todo.check} onChange={() => checkTodo(todo.id, true)}/>}
+                    {todo.name}
+                  <Button size="xs" background="#2a9d8f" m={2} onClick={() => deleteTodo(todo.id)}>X</Button>
+                  </Text>
+                </ListItem>
+              ))}
+            </List>
+          </div>
+          </Box>
+        </Box>
+      </Center>
   );
 }
 
