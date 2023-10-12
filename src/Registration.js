@@ -3,13 +3,12 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Form } from "react-router-dom";
 
-function Registration({ onClose }) {
+function Registration({ onClose, setConfirmRegistration }) {
 
     const [ name, setNameForRegis ] = useState('');
     const [ email, setEmailForRegis ] = useState('');
     const [ password, setPasswordForRegis ] = useState('');
     const [ password_confirmation, setPasswordConfirmationForRegis ] = useState('');
-    const [returnToLogin, setReturnToLogin ] = useState(false);
 
     async function handleRegistration() {
         try {
@@ -20,7 +19,9 @@ function Registration({ onClose }) {
                 password_confirmation
             });
     
-            return response;
+            if (response) {
+                setConfirmRegistration(true); 
+            }
         } catch (error) {
             console.log('Error register new user', error);
             return null;

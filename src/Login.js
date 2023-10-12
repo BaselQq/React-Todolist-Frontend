@@ -11,7 +11,8 @@ function Login() {
     // const [error, setError] = useState(null);
     const [user, setUser] = useState(null);
     const { isOpen, onOpen, onClose } = useDisclosure();
-    
+    const [confirmRegistration, setConfirmRegistration ] = useState(false);
+
     useEffect (()=> {
         const storedToken = localStorage.getItem('token');
 
@@ -57,6 +58,7 @@ function Login() {
             </div>
             ) : (
                 <div>
+                    {!confirmRegistration &&
                 <Center>
                     <Modal isOpen={isOpen} onClose={onClose} closeOnEsc={true}>
                         <ModalOverlay>
@@ -66,17 +68,22 @@ function Login() {
                             <ModalCloseButton/>
                             <ModalBody>
                                 <Center>
-                                    <Registration onClose={onClose}/>
+                                    <Registration setConfirmRegistration={setConfirmRegistration} onClose={onClose}/>
                                 </Center>
                             </ModalBody>
                         </ModalOverlay>
                     </Modal>
                 </Center>
+                }
                     <Center mt={30}>
                         <Box w="50%" rounded="md" p="2" bg="white">
                             <Center>
                                 <Text fontSize="5xl">Todolist - Login</Text>
                             </Center>
+                                <Box h="150px" background="green">
+                                    <Text fontSize="2xl">Congratulations, your account has been successfully created</Text>
+                                </Box>
+                                
                         </Box>    
                     </Center>
                     <Center>
