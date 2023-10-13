@@ -80,10 +80,6 @@ function Login() {
                             <Center>
                                 <Text fontSize="5xl">Todolist - Login</Text>
                             </Center>
-                                <Box h="150px" background="green">
-                                    <Text fontSize="2xl">Congratulations, your account has been successfully created</Text>
-                                </Box>
-                                
                         </Box>    
                     </Center>
                     <Center>
