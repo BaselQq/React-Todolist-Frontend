@@ -1,6 +1,6 @@
 # install and start
 Note that backend should be started first:
-https://github.com/BaselQq/laravel_todolist_frontend
+https://github.com/BaselQq/laravel_todolist_restapi
 
 ```bash
 npm install
