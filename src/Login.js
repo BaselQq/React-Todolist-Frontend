@@ -15,7 +15,8 @@ function Login() {
 
     useEffect (()=> {
         const storedToken = localStorage.getItem('token');
-
+//TODO: remove and avoid storing a token in the browser local storage for security reasons. implement a login auth service like clark or similar instead or build a proxy yourself to encrypt the token
+// accessing the token in your the local storage is super easy to hack by hackers
         if (storedToken) {
             
             const storedUser = JSON.parse(localStorage.getItem('user'));

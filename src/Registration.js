@@ -68,5 +68,5 @@ function Registration({ onClose, setConfirmRegistration }) {
         </Box>
     );
 }
-
+//TODO: implement the Buttons as a seperate compontent in the Components Directory to avoid styling in the registration page by naming it CustomButton with adding children pros to it text label and exposing the onClick prop across the components
 export default Registration;
